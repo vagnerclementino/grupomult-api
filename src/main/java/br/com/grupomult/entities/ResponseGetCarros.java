@@ -1,36 +1,42 @@
 package br.com.grupomult.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
-import javax.validation.Valid;
-
-import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.grupomult.models.CarroModel;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.Serializable;
+import org.springframework.validation.annotation.Validated;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * ResponseGetCarros
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-22T15:15:07.668Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-22T15:37:49.925-02:00")
 
-public class ResponseGetCarros   {
+public class ResponseGetCarros  implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @JsonProperty("carros")
   @Valid
-  private List<Carro> carros = null;
+  private List<CarroModel> carros = null;
 
-  public ResponseGetCarros carros(List<Carro> carros) {
+  public ResponseGetCarros carros(List<CarroModel> carros) {
     this.carros = carros;
     return this;
   }
 
-  public ResponseGetCarros addCarrosItem(Carro carrosItem) {
+  public ResponseGetCarros addCarrosItem(CarroModel carrosItem) {
     if (this.carros == null) {
-      this.carros = new ArrayList<Carro>();
+      this.carros = new ArrayList<>();
     }
     this.carros.add(carrosItem);
     return this;
@@ -44,11 +50,11 @@ public class ResponseGetCarros   {
 
   @Valid
 
-  public List<Carro> getCarros() {
+  public List<CarroModel> getCarros() {
     return carros;
   }
 
-  public void setCarros(List<Carro> carros) {
+  public void setCarros(List<CarroModel> carros) {
     this.carros = carros;
   }
 

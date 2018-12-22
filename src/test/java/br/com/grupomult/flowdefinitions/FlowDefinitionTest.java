@@ -11,15 +11,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.grupomult.configuration.TestConfiguration;
-import br.com.grupomult.flows.animal.ListAnimalsByIdConverter;
-import br.com.grupomult.flows.animal.ListAnimalsByIdLoad;
-import br.com.grupomult.flows.animal.ListAnimalsByIdLoadValidate;
-import br.com.grupomult.flows.animal.ListAnimalsByIdResponse;
-import br.com.grupomult.flows.animal.ListAnimalsByIdValidate;
-import br.com.grupomult.flows.animal.ListAnimalsConverter;
-import br.com.grupomult.flows.animal.ListAnimalsLoad;
-import br.com.grupomult.flows.animal.ListAnimalsResponse;
-import br.com.grupomult.flows.animal.ListAnimalsValidate;
+import br.com.grupomult.flows.carros.ListCarrosByIdConverter;
+import br.com.grupomult.flows.carros.ListCarrosByIdLoad;
+import br.com.grupomult.flows.carros.ListCarrosByIdLoadValidate;
+import br.com.grupomult.flows.carros.ListCarrosByIdResponse;
+import br.com.grupomult.flows.carros.ListCarrosByIdValidate;
+import br.com.grupomult.flows.carros.ListCarrosConverter;
+import br.com.grupomult.flows.carros.ListCarrosLoad;
+import br.com.grupomult.flows.carros.ListCarrosResponse;
+import br.com.grupomult.flows.carros.ListCarrosValidate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfiguration.class)
@@ -29,37 +29,37 @@ public class FlowDefinitionTest {
 	private ApplicationContext applicationContest;
 
 	@Test
-	public void testFlowListAnimalsExistsSuccess() {
-		assertNotNull(applicationContest.getBean("listAnimalsValidate"));
-		assertNotNull(applicationContest.getBean("listAnimalsLoad"));
-		assertNotNull(applicationContest.getBean("listAnimalsConverter"));
-		assertNotNull(applicationContest.getBean("listAnimalsResponse"));
+	public void testFlowListCarrosExistsSuccess() {
+		assertNotNull(applicationContest.getBean("listCarrosValidate"));
+		assertNotNull(applicationContest.getBean("listCarrosLoad"));
+		assertNotNull(applicationContest.getBean("listCarrosConverter"));
+		assertNotNull(applicationContest.getBean("listCarrosResponse"));
 	}
 
 	@Test
-	public void testFlowListAnimalsInstanceofSuccess() {
-		assertTrue(applicationContest.getBean("listAnimalsValidate") instanceof ListAnimalsValidate);
-		assertTrue(applicationContest.getBean("listAnimalsLoad") instanceof ListAnimalsLoad);
-		assertTrue(applicationContest.getBean("listAnimalsConverter") instanceof ListAnimalsConverter);
-		assertTrue(applicationContest.getBean("listAnimalsResponse") instanceof ListAnimalsResponse);
+	public void testFlowListCarrosInstanceofSuccess() {
+		assertTrue(applicationContest.getBean("listCarrosValidate") instanceof ListCarrosValidate);
+		assertTrue(applicationContest.getBean("listCarrosLoad") instanceof ListCarrosLoad);
+		assertTrue(applicationContest.getBean("listCarrosConverter") instanceof ListCarrosConverter);
+		assertTrue(applicationContest.getBean("listCarrosResponse") instanceof ListCarrosResponse);
 	}
 
 	@Test
-	public void testFlowListAnimalsByIdExistsSuccess() {
-		assertNotNull(applicationContest.getBean("listAnimalsByIdValidate"));
-		assertNotNull(applicationContest.getBean("listAnimalsByIdLoad"));
-		assertNotNull(applicationContest.getBean("listAnimalsByIdLoadValidate"));
-		assertNotNull(applicationContest.getBean("listAnimalsByIdConverter"));
-		assertNotNull(applicationContest.getBean("listAnimalsByIdResponse"));
+	public void testFlowListCarrosByIdExistsSuccess() {
+		assertNotNull(applicationContest.getBean("listCarrosByIdValidate"));
+		assertNotNull(applicationContest.getBean("listCarrosByIdLoad"));
+		assertNotNull(applicationContest.getBean("listCarrosByIdLoadValidate"));
+		assertNotNull(applicationContest.getBean("listCarrosByIdConverter"));
+		assertNotNull(applicationContest.getBean("listCarrosByIdResponse"));
 	}
 
 	@Test
-	public void testFlowListAnimalsByIdInstanceofSuccess() {
-		assertTrue(applicationContest.getBean("listAnimalsByIdValidate") instanceof ListAnimalsByIdValidate);
-		assertTrue(applicationContest.getBean("listAnimalsByIdLoad") instanceof ListAnimalsByIdLoad);
-		assertTrue(applicationContest.getBean("listAnimalsByIdLoadValidate") instanceof ListAnimalsByIdLoadValidate);
-		assertTrue(applicationContest.getBean("listAnimalsByIdConverter") instanceof ListAnimalsByIdConverter);
-		assertTrue(applicationContest.getBean("listAnimalsByIdResponse") instanceof ListAnimalsByIdResponse);
+	public void testFlowListCarrosByIdInstanceofSuccess() {
+		assertTrue(applicationContest.getBean("listCarrosByIdValidate") instanceof ListCarrosByIdValidate);
+		assertTrue(applicationContest.getBean("listCarrosByIdLoad") instanceof ListCarrosByIdLoad);
+		assertTrue(applicationContest.getBean("listCarrosByIdLoadValidate") instanceof ListCarrosByIdLoadValidate);
+		assertTrue(applicationContest.getBean("listCarrosByIdConverter") instanceof ListCarrosByIdConverter);
+		assertTrue(applicationContest.getBean("listCarrosByIdResponse") instanceof ListCarrosByIdResponse);
 	}
 
 }

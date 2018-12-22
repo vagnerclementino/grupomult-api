@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -140,7 +141,8 @@ public class DateUtilsTest {
 
 	@Test
 	public void testDateToStringSuccess() {
-		String date = DateUtils.dateToString(DATE, DATE_PATTERN_VALID);
+		LocalDate localDate = DateUtils.dateToLocalDate(DATE);
+		String date = DateUtils.dateToString(localDate, DATE_PATTERN_VALID);
 		assertNotNull(date);
 		assertEquals(DATE_STRING, date);
 	}

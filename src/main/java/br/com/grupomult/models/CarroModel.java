@@ -1,80 +1,40 @@
-package br.com.grupomult.entities;
+package br.com.grupomult.models;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.Objects;
-
-import javax.persistence.Entity;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import java.io.Serializable;
+import org.springframework.validation.annotation.Validated;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
- * Carro
+ * CarroModel
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-22T15:37:49.925-02:00")
-@Getter
-@Setter
-@Builder
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-public class Carro  implements Serializable {
+
+public class CarroModel  implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("id")
-  private Long id = null;
-
   @JsonProperty("codigo")
-  private Long codigo = null;
+  private String codigo = null;
 
   @JsonProperty("descricao")
   private String descricao = null;
 
   @JsonProperty("dataCriacao")
-  private LocalDate dataCriacao = null;
+  private String dataCriacao = null;
 
   @JsonProperty("dataAtualizacao")
-  private OffsetDateTime dataAtualizacao = null;
+  private String dataAtualizacao = null;
 
   @JsonProperty("tipoCarro")
-  private TipoCarro tipoCarro = null;
+  private String tipoCarro = null;
 
-  public Carro id(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Carro codigo(Long codigo) {
+  public CarroModel codigo(String codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -87,15 +47,15 @@ public class Carro  implements Serializable {
   @NotNull
 
 
-  public Long getCodigo() {
+  public String getCodigo() {
     return codigo;
   }
 
-  public void setCodigo(Long codigo) {
+  public void setCodigo(String codigo) {
     this.codigo = codigo;
   }
 
-  public Carro descricao(String descricao) {
+  public CarroModel descricao(String descricao) {
     this.descricao = descricao;
     return this;
   }
@@ -116,7 +76,7 @@ public class Carro  implements Serializable {
     this.descricao = descricao;
   }
 
-  public Carro dataCriacao(LocalDate dataCriacao) {
+  public CarroModel dataCriacao(String dataCriacao) {
     this.dataCriacao = dataCriacao;
     return this;
   }
@@ -128,17 +88,16 @@ public class Carro  implements Serializable {
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
-  @Valid
 
-  public LocalDate getDataCriacao() {
+  public String getDataCriacao() {
     return dataCriacao;
   }
 
-  public void setDataCriacao(LocalDate dataCriacao) {
+  public void setDataCriacao(String dataCriacao) {
     this.dataCriacao = dataCriacao;
   }
 
-  public Carro dataAtualizacao(OffsetDateTime dataAtualizacao) {
+  public CarroModel dataAtualizacao(String dataAtualizacao) {
     this.dataAtualizacao = dataAtualizacao;
     return this;
   }
@@ -150,17 +109,16 @@ public class Carro  implements Serializable {
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
-  @Valid
 
-  public OffsetDateTime getDataAtualizacao() {
+  public String getDataAtualizacao() {
     return dataAtualizacao;
   }
 
-  public void setDataAtualizacao(OffsetDateTime dataAtualizacao) {
+  public void setDataAtualizacao(String dataAtualizacao) {
     this.dataAtualizacao = dataAtualizacao;
   }
 
-  public Carro tipoCarro(TipoCarro tipoCarro) {
+  public CarroModel tipoCarro(String tipoCarro) {
     this.tipoCarro = tipoCarro;
     return this;
   }
@@ -171,13 +129,12 @@ public class Carro  implements Serializable {
   **/
   @ApiModelProperty(value = "")
 
-  @Valid
 
-  public TipoCarro getTipoCarro() {
+  public String getTipoCarro() {
     return tipoCarro;
   }
 
-  public void setTipoCarro(TipoCarro tipoCarro) {
+  public void setTipoCarro(String tipoCarro) {
     this.tipoCarro = tipoCarro;
   }
 
@@ -190,26 +147,24 @@ public class Carro  implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Carro carro = (Carro) o;
-    return Objects.equals(this.id, carro.id) &&
-        Objects.equals(this.codigo, carro.codigo) &&
-        Objects.equals(this.descricao, carro.descricao) &&
-        Objects.equals(this.dataCriacao, carro.dataCriacao) &&
-        Objects.equals(this.dataAtualizacao, carro.dataAtualizacao) &&
-        Objects.equals(this.tipoCarro, carro.tipoCarro);
+    CarroModel carroModel = (CarroModel) o;
+    return Objects.equals(this.codigo, carroModel.codigo) &&
+        Objects.equals(this.descricao, carroModel.descricao) &&
+        Objects.equals(this.dataCriacao, carroModel.dataCriacao) &&
+        Objects.equals(this.dataAtualizacao, carroModel.dataAtualizacao) &&
+        Objects.equals(this.tipoCarro, carroModel.tipoCarro);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, codigo, descricao, dataCriacao, dataAtualizacao, tipoCarro);
+    return Objects.hash(codigo, descricao, dataCriacao, dataAtualizacao, tipoCarro);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Carro {\n");
+    sb.append("class CarroModel {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
     sb.append("    dataCriacao: ").append(toIndentedString(dataCriacao)).append("\n");
