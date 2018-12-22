@@ -2,7 +2,7 @@ package br.com.grupomult.utils;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -26,16 +26,20 @@ public final class DateUtils {
 		}
 	}
 
-	public static String dateToString(LocalDate date, String pattern) {
+	public static String dateToString(Date date, String pattern) {
 		return new SimpleDateFormat(pattern).format(date);
 	}
 	
-	public static String dateTimeToString(OffsetDateTime date, String pattern) {
+	public static String dateTimeToString(Date date, String pattern) {
 		return new SimpleDateFormat(pattern).format(date);
 	}
 
 	public static LocalDate dateToLocalDate(Date date) {
 		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	}
+	
+	public static Date localDateToDate(LocalDate localDate) {
+		return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	}
 
 }

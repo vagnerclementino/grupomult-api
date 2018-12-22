@@ -1,11 +1,16 @@
 package br.com.grupomult.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -32,11 +37,13 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name="CARRO")
 public class Carro  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
+  @Id
+  @GeneratedValue
   private Long id = null;
 
   @JsonProperty("codigo")
@@ -45,13 +52,17 @@ public class Carro  implements Serializable {
   @JsonProperty("descricao")
   private String descricao = null;
 
-  @JsonProperty("dataCriacao")
-  private LocalDate dataCriacao = null;
-
+   @JsonProperty("dataCriacao")
+   @Temporal(TemporalType.TIMESTAMP)
+  private Date dataCriacao = null;
+  
   @JsonProperty("dataAtualizacao")
-  private OffsetDateTime dataAtualizacao = null;
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date dataAtualizacao = null;
 
   @JsonProperty("tipoCarro")
+  @ManyToOne
+  @JoinColumn(name="tipo_carro_id")
   private TipoCarro tipoCarro = null;
 
   public Carro id(Long id) {
@@ -116,7 +127,7 @@ public class Carro  implements Serializable {
     this.descricao = descricao;
   }
 
-  public Carro dataCriacao(LocalDate dataCriacao) {
+  public Carro dataCriacao(Date dataCriacao) {
     this.dataCriacao = dataCriacao;
     return this;
   }
@@ -130,15 +141,15 @@ public class Carro  implements Serializable {
 
   @Valid
 
-  public LocalDate getDataCriacao() {
+  public Date getDataCriacao() {
     return dataCriacao;
   }
 
-  public void setDataCriacao(LocalDate dataCriacao) {
+  public void setDataCriacao(Date dataCriacao) {
     this.dataCriacao = dataCriacao;
   }
 
-  public Carro dataAtualizacao(OffsetDateTime dataAtualizacao) {
+  public Carro dataAtualizacao(Date dataAtualizacao) {
     this.dataAtualizacao = dataAtualizacao;
     return this;
   }
@@ -152,11 +163,11 @@ public class Carro  implements Serializable {
 
   @Valid
 
-  public OffsetDateTime getDataAtualizacao() {
+  public Date getDataAtualizacao() {
     return dataAtualizacao;
   }
 
-  public void setDataAtualizacao(OffsetDateTime dataAtualizacao) {
+  public void setDataAtualizacao(Date dataAtualizacao) {
     this.dataAtualizacao = dataAtualizacao;
   }
 

@@ -141,8 +141,7 @@ public class DateUtilsTest {
 
 	@Test
 	public void testDateToStringSuccess() {
-		LocalDate localDate = DateUtils.dateToLocalDate(DATE);
-		String date = DateUtils.dateToString(localDate, DATE_PATTERN_VALID);
+		String date = DateUtils.dateToString(DATE, DATE_PATTERN_VALID);
 		assertNotNull(date);
 		assertEquals(DATE_STRING, date);
 	}

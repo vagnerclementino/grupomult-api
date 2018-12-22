@@ -33,11 +33,37 @@ paths:
           description: Representação dos dados de todos os animais cadastrados.
           schema:
             $ref: '#/definitions/ResponseGetCarros'
-        204:
-          description: Nenhum carro encontrado
+        404:
+          description: "Nenhum carro encontrado"
         500:
-          description: Erro interno
-
+          description: "Erro interno"
+  /carros:
+    post:
+      tags:
+      - "Carros"
+      summary: "Adiciona um novo carro"
+      description: "Inclui um novo carro retornando a URI de acesso ao recurso"
+      operationId: "adicionaCarro"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Objeto do tipo carro que será adicionado"
+        required: true
+        schema:
+          $ref: "#/definitions/CarroModel"
+      responses:
+        201:
+          description: "Carro adicionado com sucesso"
+          schema:
+            $ref: '#/definitions/ResponsePostCarros'
+        405:
+          description: "Entrada inválida"
+        500:
+          description: "Erro interno"
   /carros/{id}:
     get:
       tags:
@@ -51,10 +77,11 @@ paths:
         - name: id
           in: path
           type: integer
+          format: "int64"
           required: true
       responses:
         200:
-          description: Detalhe do carro encontrado
+          description: "Detalhe do carro encontrado"
           schema:
             $ref: '#/definitions/ResponseGetCarrosById'
         404:
@@ -74,6 +101,14 @@ definitions:
   ResponseGetCarrosById:
     type: object
     properties:
+      carro:
+        $ref: '#/definitions/CarroModel'
+
+  ResponsePostCarros:
+    type: object
+    properties:
+      uri:
+        type: "string"
       carro:
         $ref: '#/definitions/CarroModel'
 

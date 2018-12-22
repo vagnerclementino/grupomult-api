@@ -5,32 +5,30 @@
  */
 package br.com.grupomult.api.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.grupomult.entities.ResponseGetCarros;
-import br.com.grupomult.entities.ResponseGetCarrosById;
-import io.swagger.annotations.*;
+import java.io.IOException;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-22T15:37:49.925-02:00")
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.grupomult.entities.ResponseGetCarros;
+import br.com.grupomult.entities.ResponseGetCarrosById;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T11:49:33.314-02:00")
 
 @Api(value = "carros", description = "the carros API")
 public interface CarrosApi {
@@ -82,7 +80,7 @@ public interface CarrosApi {
     @RequestMapping(value = "/carros/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<ResponseGetCarrosById> listCarro(@ApiParam(value = "",required=true) @PathVariable("id") Integer id) {
+    default ResponseEntity<ResponseGetCarrosById> listCarro(@ApiParam(value = "",required=true) @PathVariable("id") Long id) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
