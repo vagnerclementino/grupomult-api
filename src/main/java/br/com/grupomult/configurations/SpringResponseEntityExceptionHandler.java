@@ -33,8 +33,10 @@ public class SpringResponseEntityExceptionHandler extends ResponseEntityExceptio
 	@Getter
 	@AllArgsConstructor
 	private static final class Error {
+		
 		private final int status;
-		private final String message;
+		private final String message;		
+		
 	}
 
 }

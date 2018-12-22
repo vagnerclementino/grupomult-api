@@ -7,12 +7,13 @@ import static br.com.grupomult.utils.DateUtils.dateToString;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-import br.com.grupomult.api.animal.models.Animal;
+
+import br.com.grupomult.api.animal.models.AnimalModel;
 
 public class AnimalConverter {
 
-	protected final static Animal convert(br.com.grupomult.entities.Animal entity) {
-		Animal domain = new Animal();
+	protected final static AnimalModel convert(br.com.grupomult.entities.Animal entity) {
+		AnimalModel domain = new AnimalModel();
 		domain.setName(entity.getName());
 		domain.setDob(dateToString(entity.getDob(), ISO8601_COMPLETE_DATE));
 		domain.setSpecies(entity.getSpecies().getCode());

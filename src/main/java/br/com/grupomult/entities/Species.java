@@ -6,7 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import br.com.grupomult.api.animal.models.Animal.SpeciesEnum;
+import br.com.grupomult.entities.enums.SpeciesEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,6 +28,6 @@ public class Species {
 	private Integer id;
 
 	@Enumerated(EnumType.STRING)
-	private SpeciesEnum code;
+	private SpeciesEnum code;	
 
 }

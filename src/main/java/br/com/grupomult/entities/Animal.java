@@ -38,4 +38,7 @@ public class Animal {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Species species;
 
+
+
+
 }

@@ -20,13 +20,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import br.com.grupomult.api.animal.models.Animal.SpeciesEnum;
 import br.com.grupomult.api.animal.models.ResponseGetAnimalsById;
 import br.com.grupomult.configuration.TestConfiguration;
 import br.com.grupomult.converter.AnimalConverter;
 import br.com.grupomult.entities.Animal;
 import br.com.grupomult.entities.Species;
-import br.com.grupomult.flows.animal.ListAnimalsByIdConverter;
+import br.com.grupomult.entities.enums.SpeciesEnum;
 import br.com.grupomult.utils.DateUtils;
 
 @RunWith(PowerMockRunner.class)
@@ -62,7 +61,7 @@ public class ListAnimalsByIdConverterTest {
 		ResponseGetAnimalsById body = response.getBody();
 		assertNotNull(body);
 
-		br.com.grupomult.api.animal.models.Animal animal = body.getAnimal();
+		br.com.grupomult.api.animal.models.AnimalModel animal = body.getAnimal();
 		assertNotNull(animal);
 		assertEquals(NAME, animal.getName());
 		assertEquals(DOB, animal.getDob());
@@ -73,8 +72,13 @@ public class ListAnimalsByIdConverterTest {
 	}
 
 	private Animal createEntityAnimal() {
-		return Animal.builder().name(NAME).dob(DateUtils.stringToDate(DOB, DateUtils.ISO8601_COMPLETE_DATE))
-				.species(Species.builder().code(SPECIES).build()).build();
+		return Animal.builder()
+					.name(NAME)
+					.dob(DateUtils.stringToDate(DOB, DateUtils.ISO8601_COMPLETE_DATE))
+					.species(Species.builder()
+							           .code(SPECIES)
+							           .build()
+							 ).build();
 	}
 
 }

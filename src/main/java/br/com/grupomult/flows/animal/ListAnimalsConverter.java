@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
-import br.com.grupomult.api.animal.models.Animal;
+import br.com.grupomult.api.animal.models.AnimalModel;
 import br.com.grupomult.api.animal.models.ResponseGetAnimals;
 import br.com.grupomult.converter.AnimalConverter;
 
@@ -25,7 +25,7 @@ public class ListAnimalsConverter extends AnimalConverter {
 		 * lista vazia do tipo de resposta da API, caso contrário é gerada uma lista com
 		 * objetos de resposta da API baseados nos objetos do banco.
 		 */
-		List<Animal> animalsApi = ofNullableAndEmpty(animals).orElse(Collections.emptyList()).stream()
+		List<AnimalModel> animalsApi = ofNullableAndEmpty(animals).orElse(Collections.emptyList()).stream()
 				.map(ListAnimalsConverter::convert).collect(Collectors.toList());
 
 		return response.execute(animalsApi);

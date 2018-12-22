@@ -39,7 +39,7 @@ public class ListAnimalsByIdLoadTest {
 	private Animal entity;
 
 	@MockBean
-	private br.com.grupomult.api.animal.models.Animal domain;
+	private br.com.grupomult.api.animal.models.AnimalModel domain;
 
 	@Before
 	public void setUp() throws Exception {
@@ -56,7 +56,7 @@ public class ListAnimalsByIdLoadTest {
 		ResponseGetAnimalsById body = response.getBody();
 		assertNotNull(body);
 
-		br.com.grupomult.api.animal.models.Animal animal = body.getAnimal();
+		br.com.grupomult.api.animal.models.AnimalModel animal = body.getAnimal();
 		assertNotNull(animal);
 	}
 
