@@ -22,10 +22,16 @@ public class LoadDatabase {
 	public CommandLineRunner initDatabase(TipoCarroRepository tipoCarroRepository,  CarroRepository carroRepository) {
 		return args -> {
 			TipoCarro tipoCarroSUV = tipoCarroRepository.save(createTipoCarro(1L, "SUV"));
+			TipoCarro tipoCarroPasseio = tipoCarroRepository.save(createTipoCarro(2L, "Passeio"));
+			
 			log.info("Preloading " + tipoCarroSUV.toString());
-			Date now =  DateUtils.localDateToDate(LocalDate.now());
+			
+			Date now =  DateUtils.getCurrentTime();
 			Carro hondaFit = createCarro(1L, "Honda Fit", now, now, tipoCarroSUV);
+			Carro gol = createCarro(1L, "Gol", now, now, tipoCarroPasseio);
+			
 			log.info("Preloading " + carroRepository.save(hondaFit).toString());
+			log.info("Preloading " + carroRepository.save(gol).toString());
 		};
 	}
 

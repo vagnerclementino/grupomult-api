@@ -62,7 +62,7 @@ public class Carro  implements Serializable {
   private Date dataAtualizacao = null;
 
   @JsonProperty("tipo")
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name="TIPO_CARRO_ID", nullable=false)
   private TipoCarro tipo = null;
 
@@ -75,8 +75,8 @@ public class Carro  implements Serializable {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+//  @ApiModelProperty(required = true, value = "")
+//  @NotNull
 
 
   public Long getId() {

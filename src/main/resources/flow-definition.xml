@@ -4,17 +4,23 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- Flow: list animals -->
+	<!-- Flow: lista carros -->
 	<bean id="listCarrosValidate"  class="br.com.grupomult.flows.carros.ListCarrosValidate"  />
 	<bean id="listCarrosLoad"      class="br.com.grupomult.flows.carros.ListCarrosLoad"      />
 	<bean id="listCarrosConverter" class="br.com.grupomult.flows.carros.ListCarrosConverter" />
 	<bean id="listCarrosResponse"  class="br.com.grupomult.flows.carros.ListCarrosResponse"  />
 
-	<!-- Flow: list animals by id -->
+	<!-- Flow: lista carro by id -->
 	<bean id="listCarrosByIdValidate"     class="br.com.grupomult.flows.carros.ListCarrosByIdValidate"     />
 	<bean id="listCarrosByIdLoad"         class="br.com.grupomult.flows.carros.ListCarrosByIdLoad"         />
 	<bean id="listCarrosByIdLoadValidate" class="br.com.grupomult.flows.carros.ListCarrosByIdLoadValidate" />
 	<bean id="listCarrosByIdConverter"    class="br.com.grupomult.flows.carros.ListCarrosByIdConverter"    />
 	<bean id="listCarrosByIdResponse"     class="br.com.grupomult.flows.carros.ListCarrosByIdResponse"     />
+	
+	<!-- Flow: adiciona carro -->
+	<bean id="adicionaCarrosValidate"  class="br.com.grupomult.flows.carros.AdicionaCarrosValidate"  />
+	<bean id="adicionaCarrosLoad"      class="br.com.grupomult.flows.carros.AdicionaCarrosLoad"      />
+	<bean id="adicionaCarrosConverter" class="br.com.grupomult.flows.carros.AdicionaCarrosConverter" />
+	<bean id="adicionaCarroResponse"  class="br.com.grupomult.flows.carros.AdicionaCarroResponse"  />
 
 </beans>

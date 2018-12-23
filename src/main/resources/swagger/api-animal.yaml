@@ -200,7 +200,6 @@ definitions:
   Carro:
     type: "object"
     required:
-      - "id"
       - "codigo"
       - "descricao"
       - "tipo"

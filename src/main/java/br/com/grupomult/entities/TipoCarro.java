@@ -3,6 +3,7 @@ package br.com.grupomult.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +30,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity(name="TIPO_CARRO")
 public class TipoCarro  implements Serializable {
   private static final long serialVersionUID = 1L;
 
