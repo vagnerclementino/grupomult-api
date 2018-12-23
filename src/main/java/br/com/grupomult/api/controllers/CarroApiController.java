@@ -8,30 +8,41 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.grupomult.constants.ApiConstants;
 import br.com.grupomult.entities.ResponseGetCarros;
 import br.com.grupomult.entities.ResponseGetCarrosById;
+import br.com.grupomult.entities.ResponsePostCarros;
+import br.com.grupomult.flows.carros.AdicionaCarrosValidate;
 import br.com.grupomult.flows.carros.ListCarrosByIdValidate;
 import br.com.grupomult.flows.carros.ListCarrosValidate;
+import br.com.grupomult.models.CarroModel;
 
 @RestController
 public class CarroApiController implements CarrosApi{
 	
 	@Autowired
-	private ListCarrosValidate listCarrosFlow;
+	private ListCarrosValidate listaTodosCarrosFlow;
 	
 	@Autowired
-	private ListCarrosByIdValidate listCarrosByIdFlow;
+	private ListCarrosByIdValidate listaCarroPorIdFlow;
+	
+	@Autowired
+	private AdicionaCarrosValidate adicionaCarroFlow;
+	
 	
 	@Override
-	public ResponseEntity<ResponseGetCarros> listAllCarro() {
-	
-		return listCarrosFlow.execute();
+	public ResponseEntity<ResponseGetCarros> listaTodosCarros() {
+		
+		return listaTodosCarrosFlow.execute();
 	}
 	
-	
+	@Override
+	public ResponseEntity<ResponseGetCarrosById> listCarroPorId (@PathVariable(value = ApiConstants.GET_LIST_ANIMALS_BY_ID_PATH_ID, required = true) Long id) {
+		
+		return listaCarroPorIdFlow.execute(id);
+	}
 	
 	@Override
-	public ResponseEntity<ResponseGetCarrosById> listCarro(@PathVariable(value = ApiConstants.GET_LIST_ANIMALS_BY_ID_PATH_ID, required = true) Long id) {
+	public ResponseEntity<ResponsePostCarros> adicionaCarro(CarroModel body) {
 		
-		return listCarrosByIdFlow.execute(id);
+		return adicionaCarroFlow.execute(body);
 	}
 
 }

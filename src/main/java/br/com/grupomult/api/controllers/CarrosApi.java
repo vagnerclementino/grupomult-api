@@ -5,17 +5,18 @@
  */
 package br.com.grupomult.api.controllers;
 
-
 import java.io.IOException;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,12 +24,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.grupomult.entities.ResponseGetCarros;
 import br.com.grupomult.entities.ResponseGetCarrosById;
+import br.com.grupomult.entities.ResponsePostCarros;
+import br.com.grupomult.models.CarroModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T11:49:33.314-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T12:36:58.908-02:00")
 
 @Api(value = "carros", description = "the carros API")
 public interface CarrosApi {
@@ -47,19 +50,20 @@ public interface CarrosApi {
         return getRequest().map(r -> r.getHeader("Accept"));
     }
 
-    @ApiOperation(value = "Lista todos os carros cadastrados", nickname = "listAllCarro", notes = "Lista todos os detalhes dos carros cadastrados.", response = ResponseGetCarros.class, tags={ "Carros", })
+    @ApiOperation(value = "Adiciona um novo carro", nickname = "adicionaCarro", notes = "Inclui um novo carro retornando a URI de acesso ao recurso", response = ResponsePostCarros.class, tags={ "Carros", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Representação dos dados de todos os animais cadastrados.", response = ResponseGetCarros.class),
-        @ApiResponse(code = 204, message = "Nenhum carro encontrado"),
+        @ApiResponse(code = 201, message = "Carro adicionado com sucesso", response = ResponsePostCarros.class),
+        @ApiResponse(code = 405, message = "Entrada inválida"),
         @ApiResponse(code = 500, message = "Erro interno") })
     @RequestMapping(value = "/carros",
         produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    default ResponseEntity<ResponseGetCarros> listAllCarro() {
+        consumes = { "application/json" },
+        method = RequestMethod.POST)
+    default ResponseEntity<ResponsePostCarros> adicionaCarro(@ApiParam(value = "Objeto do tipo carro que será adicionado" ,required=true )  @Valid @RequestBody CarroModel body) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carros\" : [ {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  }, {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  } ]}", ResponseGetCarros.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  },  \"uri\" : \"uri\"}", ResponsePostCarros.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -72,7 +76,7 @@ public interface CarrosApi {
     }
 
 
-    @ApiOperation(value = "Lista um carro específico", nickname = "listCarro", notes = "Lista os detalhes de um carro específico de acordo com o ID.", response = ResponseGetCarrosById.class, tags={ "Carros", })
+    @ApiOperation(value = "Lista um carro específico", nickname = "listCarroPorId", notes = "Lista os detalhes de um carro específico de acordo com o ID.", response = ResponseGetCarrosById.class, tags={ "Carros", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Detalhe do carro encontrado", response = ResponseGetCarrosById.class),
         @ApiResponse(code = 404, message = "Nenhum carro encontrado correspondente ao ID informado"),
@@ -80,11 +84,36 @@ public interface CarrosApi {
     @RequestMapping(value = "/carros/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<ResponseGetCarrosById> listCarro(@ApiParam(value = "",required=true) @PathVariable("id") Long id) {
+    default ResponseEntity<ResponseGetCarrosById> listCarroPorId(@ApiParam(value = "",required=true) @PathVariable("id") Long id) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
                     return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  }}", ResponseGetCarrosById.class), HttpStatus.NOT_IMPLEMENTED);
+                } catch (IOException e) {
+                    log.error("Couldn't serialize response for content type application/json", e);
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
+        } else {
+            log.warn("ObjectMapper or HttpServletRequest not configured in default CarrosApi interface so no example is generated");
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+
+    @ApiOperation(value = "Lista todos os carros cadastrados", nickname = "listaTodosCarros", notes = "Lista todos os detalhes dos carros cadastrados.", response = ResponseGetCarros.class, tags={ "Carros", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Representação dos dados de todos os carros cadastrados.", response = ResponseGetCarros.class),
+        @ApiResponse(code = 404, message = "Nenhum carro encontrado"),
+        @ApiResponse(code = 500, message = "Erro interno") })
+    @RequestMapping(value = "/carros",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<ResponseGetCarros> listaTodosCarros() {
+        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+            if (getAcceptHeader().get().contains("application/json")) {
+                try {
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carros\" : [ {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  }, {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  } ]}", ResponseGetCarros.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
