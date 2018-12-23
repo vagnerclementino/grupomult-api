@@ -22,5 +22,11 @@
 	<bean id="adicionaCarrosLoad"      class="br.com.grupomult.flows.carros.AdicionaCarrosLoad"      />
 	<bean id="adicionaCarrosConverter" class="br.com.grupomult.flows.carros.AdicionaCarrosConverter" />
 	<bean id="adicionaCarroResponse"  class="br.com.grupomult.flows.carros.AdicionaCarroResponse"  />
+	
+	<!-- Flow: atualiza carro -->
+	<bean id="atualizaCarrosValidate"  class="br.com.grupomult.flows.carros.AtualizaCarrosValidate"  />
+	<bean id="atualizaCarrosLoad"      class="br.com.grupomult.flows.carros.AtualizaCarrosLoad"      />
+	<bean id="atualizaCarrosConverter" class="br.com.grupomult.flows.carros.AtualizaCarrosConverter" />
+	<bean id="atualizaCarroResponse"  class="br.com.grupomult.flows.carros.AtualizaCarroResponse"  />
 
 </beans>

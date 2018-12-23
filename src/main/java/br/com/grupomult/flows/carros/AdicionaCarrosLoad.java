@@ -25,7 +25,9 @@ public class AdicionaCarrosLoad {
 		
 		Carro entity = converter.execute(carro);
 		TipoCarro tipoCarroMan = tipoCarroRepository.findById(carro.getTipo());
-		entity.setTipo(tipoCarroMan);		
+		entity.setTipo(tipoCarroMan);
+		//Deixando para o respositório gerar o id
+		entity.setId(null);
 		return converter.execute(repository.save(entity));
 	}
 

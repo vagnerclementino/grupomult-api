@@ -3,17 +3,17 @@ package br.com.grupomult.flows.carros;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
-import br.com.grupomult.entities.ResponsePostCarros;
+import br.com.grupomult.entities.ResponsePutCarros;
 import br.com.grupomult.models.CarroModel;
 
-public class AdicionaCarrosValidate {
+public class AtualizaCarrosValidate {
 
 	@Autowired
-	private AdicionaCarrosLoad load;
+	private AtualizaCarrosLoad load;
 
-	public ResponseEntity<ResponsePostCarros> execute(CarroModel carro) {
+	public ResponseEntity<ResponsePutCarros> execute(Long id, CarroModel carro) {
 		// Nothing to validate
-		return load.execute(carro);
+		return load.execute(id,carro);
 	}
 
 }

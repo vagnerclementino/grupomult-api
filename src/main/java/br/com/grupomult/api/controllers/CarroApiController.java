@@ -12,7 +12,9 @@ import br.com.grupomult.constants.ApiConstants;
 import br.com.grupomult.entities.ResponseGetCarros;
 import br.com.grupomult.entities.ResponseGetCarrosById;
 import br.com.grupomult.entities.ResponsePostCarros;
+import br.com.grupomult.entities.ResponsePutCarros;
 import br.com.grupomult.flows.carros.AdicionaCarrosValidate;
+import br.com.grupomult.flows.carros.AtualizaCarrosValidate;
 import br.com.grupomult.flows.carros.ListCarrosByIdValidate;
 import br.com.grupomult.flows.carros.ListCarrosValidate;
 import br.com.grupomult.models.CarroModel;
@@ -29,6 +31,8 @@ public class CarroApiController implements CarrosApi{
 	@Autowired
 	private AdicionaCarrosValidate adicionaCarroFlow;
 	
+	@Autowired
+	private AtualizaCarrosValidate atualizaCarroFlow;
 	
 	@Override
 	public ResponseEntity<ResponseGetCarros> listaTodosCarros() {
@@ -46,6 +50,12 @@ public class CarroApiController implements CarrosApi{
 	public ResponseEntity<ResponsePostCarros> adicionaCarro(@Valid @RequestBody CarroModel body) {
 		
 		return adicionaCarroFlow.execute(body);
+	}
+	
+	@Override
+	public ResponseEntity<ResponsePutCarros> atualizaCarro(@PathVariable(value = ApiConstants.CARRO_PATH_ID, required = true) Long id, @Valid @RequestBody  CarroModel body) {
+		
+		return atualizaCarroFlow.execute(id, body);
 	}
 
 }

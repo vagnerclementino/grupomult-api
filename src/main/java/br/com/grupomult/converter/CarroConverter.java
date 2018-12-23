@@ -9,7 +9,7 @@ import br.com.grupomult.utils.DateUtils;
 
 public class CarroConverter {
 	
-	private CarroConverter() {
+	protected CarroConverter() {
 		
 	}
 	
@@ -18,7 +18,7 @@ public class CarroConverter {
 		domain.setId(entity.getId());
 		domain.setCodigo(entity.getCodigo());
 		domain.setDescricao(entity.getDescricao());
-		domain.setTipo(entity.getTipo().getCodigo());
+		domain.setTipo(entity.getTipo().getId());
 		domain.setDataCriacao(DateUtils.dateToString(entity.getDataCriacao(), DateUtils.ISO8601_COMPLETE_DATE));
 		domain.setDataAtualizacao(DateUtils.dateTimeToString(entity.getDataAtualizacao(),  DateUtils.ISO8601_COMPLETE_DATE_TIME));
 		
