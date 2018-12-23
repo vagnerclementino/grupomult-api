@@ -1,17 +1,21 @@
 package br.com.grupomult.flows.carros;
 
-import org.springframework.http.ResponseEntity;
+import java.net.URI;
 
-import br.com.grupomult.entities.ResponseGetCarrosById;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import br.com.grupomult.entities.ResponsePostCarros;
 import br.com.grupomult.models.CarroModel;
 
 public class AdicionaCarroResponse {
 
 	public ResponseEntity<ResponsePostCarros> execute(CarroModel carroModel) {
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(carroModel.getId()).toUri();
 		return ResponseEntity.ok(new ResponsePostCarros()
 										.carro(carroModel)
-										.uri("localhost:8080/api/v1/carros/")
+										.uri(uri.toString())
 								);
 	}
 

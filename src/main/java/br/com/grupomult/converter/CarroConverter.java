@@ -1,7 +1,5 @@
 package br.com.grupomult.converter;
 
-import java.sql.Date;
-
 import br.com.grupomult.entities.Carro;
 import br.com.grupomult.entities.TipoCarro;
 import br.com.grupomult.models.CarroModel;
@@ -11,7 +9,11 @@ import br.com.grupomult.utils.DateUtils;
 
 public class CarroConverter {
 	
-	protected final static CarroModel convert(Carro entity) {
+	private CarroConverter() {
+		
+	}
+	
+	protected static final  CarroModel convert(Carro entity) {
 		CarroModel domain = new CarroModel();
 		domain.setId(entity.getId());
 		domain.setCodigo(entity.getCodigo());
@@ -23,17 +25,17 @@ public class CarroConverter {
 		return domain;
 	}
 	
-	protected final static Carro convert(CarroModel domain) {
+	protected static final Carro convert(CarroModel domain) {
 		Carro entity = new Carro();
 		TipoCarro tipoCarro = new TipoCarro();
 		entity.setCodigo(domain.getCodigo());
-		entity.setDescricao(entity.getDescricao());
+		entity.setDescricao(domain.getDescricao());
 		
 		tipoCarro.setId(domain.getTipo());
 		entity.setTipo(tipoCarro);
 		
-		entity.setDataCriacao(Date.valueOf(domain.getDataCriacao()));
-		entity.setDataAtualizacao(Date.valueOf(domain.getDataAtualizacao()));		
+		entity.setDataCriacao(DateUtils.stringToDate(domain.getDataCriacao(), DateUtils.ISO8601_COMPLETE_DATE));
+		entity.setDataAtualizacao(DateUtils.stringToDate(domain.getDataAtualizacao(), DateUtils.ISO8601_COMPLETE_DATE_TIME));		
 		return entity;
 	}
 
