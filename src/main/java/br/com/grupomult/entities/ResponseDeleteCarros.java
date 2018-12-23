@@ -1,8 +1,6 @@
 package br.com.grupomult.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
@@ -15,45 +13,59 @@ import br.com.grupomult.models.CarroModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ResponseGetCarros
+ * ResponseDeleteCarros
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:46:04.391-02:00")
 
-public class ResponseGetCarros  implements Serializable {
+public class ResponseDeleteCarros  implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("carros")
-  @Valid
-  private List<CarroModel> carros = null;
+  @JsonProperty("uri")
+  private String uri = null;
 
-  public ResponseGetCarros carros(List<CarroModel> carros) {
-    this.carros = carros;
-    return this;
-  }
+  @JsonProperty("carro")
+  private CarroModel carro = null;
 
-  public ResponseGetCarros addCarrosItem(CarroModel carrosItem) {
-    if (this.carros == null) {
-      this.carros = new ArrayList<>();
-    }
-    this.carros.add(carrosItem);
+  public ResponseDeleteCarros uri(String uri) {
+    this.uri = uri;
     return this;
   }
 
   /**
-   * Get carros
-   * @return carros
+   * Get uri
+   * @return uri
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getUri() {
+    return uri;
+  }
+
+  public void setUri(String uri) {
+    this.uri = uri;
+  }
+
+  public ResponseDeleteCarros carro(CarroModel carro) {
+    this.carro = carro;
+    return this;
+  }
+
+  /**
+   * Get carro
+   * @return carro
   **/
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public List<CarroModel> getCarros() {
-    return carros;
+  public CarroModel getCarro() {
+    return carro;
   }
 
-  public void setCarros(List<CarroModel> carros) {
-    this.carros = carros;
+  public void setCarro(CarroModel carro) {
+    this.carro = carro;
   }
 
 
@@ -65,21 +77,23 @@ public class ResponseGetCarros  implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponseGetCarros responseGetCarros = (ResponseGetCarros) o;
-    return Objects.equals(this.carros, responseGetCarros.carros);
+    ResponseDeleteCarros responseDeleteCarros = (ResponseDeleteCarros) o;
+    return Objects.equals(this.uri, responseDeleteCarros.uri) &&
+        Objects.equals(this.carro, responseDeleteCarros.carro);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(carros);
+    return Objects.hash(uri, carro);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponseGetCarros {\n");
+    sb.append("class ResponseDeleteCarros {\n");
     
-    sb.append("    carros: ").append(toIndentedString(carros)).append("\n");
+    sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
+    sb.append("    carro: ").append(toIndentedString(carro)).append("\n");
     sb.append("}");
     return sb.toString();
   }

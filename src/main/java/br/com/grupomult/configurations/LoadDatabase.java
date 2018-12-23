@@ -1,8 +1,6 @@
 package br.com.grupomult.configurations;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Date;
 
 import org.springframework.boot.CommandLineRunner;
@@ -37,7 +35,7 @@ public class LoadDatabase {
 					.descricao(descricao)
 					.dataCriacao(dataCriacao)
 					.dataAtualizacao(dataAtualizacao)
-					.tipoCarro(tipoCarro)
+					.tipo(tipoCarro)
 					.build();
 	}
 	private static TipoCarro createTipoCarro(Long codigo, String descricao){

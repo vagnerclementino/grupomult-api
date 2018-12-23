@@ -14,13 +14,16 @@ import javax.validation.constraints.*;
  * CarroModel
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-22T15:37:49.925-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:46:04.391-02:00")
 
 public class CarroModel  implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  @JsonProperty("id")
+  private Long id = null;
+
   @JsonProperty("codigo")
-  private String codigo = null;
+  private Long codigo = null;
 
   @JsonProperty("descricao")
   private String descricao = null;
@@ -31,10 +34,30 @@ public class CarroModel  implements Serializable {
   @JsonProperty("dataAtualizacao")
   private String dataAtualizacao = null;
 
-  @JsonProperty("tipoCarro")
-  private String tipoCarro = null;
+  @JsonProperty("tipo")
+  private Long tipo = null;
 
-  public CarroModel codigo(String codigo) {
+  public CarroModel id(Long id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public CarroModel codigo(Long codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -43,15 +66,14 @@ public class CarroModel  implements Serializable {
    * Get codigo
    * @return codigo
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
-  public String getCodigo() {
+  public Long getCodigo() {
     return codigo;
   }
 
-  public void setCodigo(String codigo) {
+  public void setCodigo(Long codigo) {
     this.codigo = codigo;
   }
 
@@ -64,8 +86,7 @@ public class CarroModel  implements Serializable {
    * Get descricao
    * @return descricao
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
   public String getDescricao() {
@@ -85,8 +106,7 @@ public class CarroModel  implements Serializable {
    * Get dataCriacao
    * @return dataCriacao
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
   public String getDataCriacao() {
@@ -106,8 +126,7 @@ public class CarroModel  implements Serializable {
    * Get dataAtualizacao
    * @return dataAtualizacao
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
   public String getDataAtualizacao() {
@@ -118,24 +137,24 @@ public class CarroModel  implements Serializable {
     this.dataAtualizacao = dataAtualizacao;
   }
 
-  public CarroModel tipoCarro(String tipoCarro) {
-    this.tipoCarro = tipoCarro;
+  public CarroModel tipo(Long tipo) {
+    this.tipo = tipo;
     return this;
   }
 
   /**
-   * Get tipoCarro
-   * @return tipoCarro
+   * Get tipo
+   * @return tipo
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getTipoCarro() {
-    return tipoCarro;
+  public Long getTipo() {
+    return tipo;
   }
 
-  public void setTipoCarro(String tipoCarro) {
-    this.tipoCarro = tipoCarro;
+  public void setTipo(Long tipo) {
+    this.tipo = tipo;
   }
 
 
@@ -148,16 +167,17 @@ public class CarroModel  implements Serializable {
       return false;
     }
     CarroModel carroModel = (CarroModel) o;
-    return Objects.equals(this.codigo, carroModel.codigo) &&
+    return Objects.equals(this.id, carroModel.id) &&
+        Objects.equals(this.codigo, carroModel.codigo) &&
         Objects.equals(this.descricao, carroModel.descricao) &&
         Objects.equals(this.dataCriacao, carroModel.dataCriacao) &&
         Objects.equals(this.dataAtualizacao, carroModel.dataAtualizacao) &&
-        Objects.equals(this.tipoCarro, carroModel.tipoCarro);
+        Objects.equals(this.tipo, carroModel.tipo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(codigo, descricao, dataCriacao, dataAtualizacao, tipoCarro);
+    return Objects.hash(id, codigo, descricao, dataCriacao, dataAtualizacao, tipo);
   }
 
   @Override
@@ -165,11 +185,12 @@ public class CarroModel  implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class CarroModel {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
     sb.append("    dataCriacao: ").append(toIndentedString(dataCriacao)).append("\n");
     sb.append("    dataAtualizacao: ").append(toIndentedString(dataAtualizacao)).append("\n");
-    sb.append("    tipoCarro: ").append(toIndentedString(tipoCarro)).append("\n");
+    sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

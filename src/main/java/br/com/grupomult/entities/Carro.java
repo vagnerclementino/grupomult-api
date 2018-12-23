@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,26 +26,25 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * Carro
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-22T15:37:49.925-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:46:04.391-02:00")
 @Getter
 @Setter
 @Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name="CARRO")
+
 public class Carro  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id = null;
 
   @JsonProperty("codigo")
@@ -52,18 +53,18 @@ public class Carro  implements Serializable {
   @JsonProperty("descricao")
   private String descricao = null;
 
-   @JsonProperty("dataCriacao")
-   @Temporal(TemporalType.TIMESTAMP)
+  @JsonProperty("dataCriacao")
+  @Temporal(TemporalType.TIMESTAMP)
   private Date dataCriacao = null;
-  
+
   @JsonProperty("dataAtualizacao")
   @Temporal(TemporalType.TIMESTAMP)
   private Date dataAtualizacao = null;
 
-  @JsonProperty("tipoCarro")
-  @ManyToOne
-  @JoinColumn(name="tipo_carro_id")
-  private TipoCarro tipoCarro = null;
+  @JsonProperty("tipo")
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name="TIPO_CARRO_ID", nullable=false)
+  private TipoCarro tipo = null;
 
   public Carro id(Long id) {
     this.id = id;
@@ -74,7 +75,8 @@ public class Carro  implements Serializable {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
 
   public Long getId() {
@@ -136,8 +138,7 @@ public class Carro  implements Serializable {
    * Get dataCriacao
    * @return dataCriacao
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
   @Valid
 
@@ -158,8 +159,7 @@ public class Carro  implements Serializable {
    * Get dataAtualizacao
    * @return dataAtualizacao
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
   @Valid
 
@@ -171,25 +171,26 @@ public class Carro  implements Serializable {
     this.dataAtualizacao = dataAtualizacao;
   }
 
-  public Carro tipoCarro(TipoCarro tipoCarro) {
-    this.tipoCarro = tipoCarro;
+  public Carro tipo(TipoCarro tipo) {
+    this.tipo = tipo;
     return this;
   }
 
   /**
-   * Get tipoCarro
-   * @return tipoCarro
+   * Get tipo
+   * @return tipo
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
   @Valid
 
-  public TipoCarro getTipoCarro() {
-    return tipoCarro;
+  public TipoCarro getTipo() {
+    return tipo;
   }
 
-  public void setTipoCarro(TipoCarro tipoCarro) {
-    this.tipoCarro = tipoCarro;
+  public void setTipo(TipoCarro tipo) {
+    this.tipo = tipo;
   }
 
 
@@ -207,12 +208,12 @@ public class Carro  implements Serializable {
         Objects.equals(this.descricao, carro.descricao) &&
         Objects.equals(this.dataCriacao, carro.dataCriacao) &&
         Objects.equals(this.dataAtualizacao, carro.dataAtualizacao) &&
-        Objects.equals(this.tipoCarro, carro.tipoCarro);
+        Objects.equals(this.tipo, carro.tipo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, codigo, descricao, dataCriacao, dataAtualizacao, tipoCarro);
+    return Objects.hash(id, codigo, descricao, dataCriacao, dataAtualizacao, tipo);
   }
 
   @Override
@@ -225,7 +226,7 @@ public class Carro  implements Serializable {
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
     sb.append("    dataCriacao: ").append(toIndentedString(dataCriacao)).append("\n");
     sb.append("    dataAtualizacao: ").append(toIndentedString(dataAtualizacao)).append("\n");
-    sb.append("    tipoCarro: ").append(toIndentedString(tipoCarro)).append("\n");
+    sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

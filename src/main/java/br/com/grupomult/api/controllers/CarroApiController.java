@@ -34,7 +34,7 @@ public class CarroApiController implements CarrosApi{
 	}
 	
 	@Override
-	public ResponseEntity<ResponseGetCarrosById> listCarroPorId (@PathVariable(value = ApiConstants.GET_LIST_ANIMALS_BY_ID_PATH_ID, required = true) Long id) {
+	public ResponseEntity<ResponseGetCarrosById> listCarroPorId (@PathVariable(value = ApiConstants.CARRO_PATH_ID, required = true) Long id) {
 		
 		return listaCarroPorIdFlow.execute(id);
 	}

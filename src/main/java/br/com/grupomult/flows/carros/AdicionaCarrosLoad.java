@@ -24,8 +24,8 @@ public class AdicionaCarrosLoad {
 	public ResponseEntity<ResponsePostCarros> execute(CarroModel carro) {
 		
 		Carro entity = converter.execute(carro);
-		TipoCarro tipoCarroMan = tipoCarroRepository.findByDescricao(carro.getTipoCarro());
-		entity.setTipoCarro(tipoCarroMan);		
+		TipoCarro tipoCarroMan = tipoCarroRepository.findById(carro.getTipo());
+		entity.setTipo(tipoCarroMan);		
 		return converter.execute(repository.save(entity));
 	}
 

@@ -13,12 +13,12 @@ import br.com.grupomult.models.CarroModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ResponsePostCarros
+ * ResponsePadraoCarro
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:46:04.391-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:23:17.827-02:00")
 
-public class ResponsePostCarros  implements Serializable {
+public class ResponsePadraoCarro  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("uri")
@@ -27,7 +27,7 @@ public class ResponsePostCarros  implements Serializable {
   @JsonProperty("carro")
   private CarroModel carro = null;
 
-  public ResponsePostCarros uri(String uri) {
+  public ResponsePadraoCarro uri(String uri) {
     this.uri = uri;
     return this;
   }
@@ -47,7 +47,7 @@ public class ResponsePostCarros  implements Serializable {
     this.uri = uri;
   }
 
-  public ResponsePostCarros carro(CarroModel carro) {
+  public ResponsePadraoCarro carro(CarroModel carro) {
     this.carro = carro;
     return this;
   }
@@ -77,9 +77,9 @@ public class ResponsePostCarros  implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponsePostCarros responsePostCarros = (ResponsePostCarros) o;
-    return Objects.equals(this.uri, responsePostCarros.uri) &&
-        Objects.equals(this.carro, responsePostCarros.carro);
+    ResponsePadraoCarro responsePadraoCarro = (ResponsePadraoCarro) o;
+    return Objects.equals(this.uri, responsePadraoCarro.uri) &&
+        Objects.equals(this.carro, responsePadraoCarro.carro);
   }
 
   @Override
@@ -90,7 +90,7 @@ public class ResponsePostCarros  implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponsePostCarros {\n");
+    sb.append("class ResponsePadraoCarro {\n");
     
     sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("    carro: ").append(toIndentedString(carro)).append("\n");

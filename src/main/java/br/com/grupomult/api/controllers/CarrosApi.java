@@ -22,16 +22,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.grupomult.entities.ResponseDeleteCarros;
 import br.com.grupomult.entities.ResponseGetCarros;
 import br.com.grupomult.entities.ResponseGetCarrosById;
 import br.com.grupomult.entities.ResponsePostCarros;
+import br.com.grupomult.entities.ResponsePutCarros;
 import br.com.grupomult.models.CarroModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T12:36:58.908-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:46:04.391-02:00")
 
 @Api(value = "carros", description = "the carros API")
 public interface CarrosApi {
@@ -63,7 +65,33 @@ public interface CarrosApi {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  },  \"uri\" : \"uri\"}", ResponsePostCarros.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : 6,    \"tipo\" : 1,    \"dataAtualizacao\" : \"dataAtualizacao\",    \"id\" : 0,    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  },  \"uri\" : \"uri\"}", ResponsePostCarros.class), HttpStatus.NOT_IMPLEMENTED);
+                } catch (IOException e) {
+                    log.error("Couldn't serialize response for content type application/json", e);
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
+        } else {
+            log.warn("ObjectMapper or HttpServletRequest not configured in default CarrosApi interface so no example is generated");
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+
+    @ApiOperation(value = "Atualiza um carro existente.", nickname = "atualizaCarro", notes = "Atualiza um novo carro retornando a URI de acesso ao recurso", response = ResponsePutCarros.class, tags={ "Carros", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Carro atualizado com sucesso", response = ResponsePutCarros.class),
+        @ApiResponse(code = 405, message = "Entrada inválida"),
+        @ApiResponse(code = 500, message = "Erro interno") })
+    @RequestMapping(value = "/carros/{id}",
+        produces = { "application/json" }, 
+        consumes = { "application/json" },
+        method = RequestMethod.PUT)
+    default ResponseEntity<ResponsePutCarros> atualizaCarro(@ApiParam(value = "",required=true) @PathVariable("id") Long id,@ApiParam(value = "Objeto do tipo carro que será atualizado" ,required=true )  @Valid @RequestBody CarroModel body) {
+        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+            if (getAcceptHeader().get().contains("application/json")) {
+                try {
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : 6,    \"tipo\" : 1,    \"dataAtualizacao\" : \"dataAtualizacao\",    \"id\" : 0,    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  },  \"uri\" : \"uri\"}", ResponsePutCarros.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -88,7 +116,7 @@ public interface CarrosApi {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  }}", ResponseGetCarrosById.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : 6,    \"tipo\" : 1,    \"dataAtualizacao\" : \"dataAtualizacao\",    \"id\" : 0,    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  }}", ResponseGetCarrosById.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -113,7 +141,33 @@ public interface CarrosApi {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carros\" : [ {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  }, {    \"codigo\" : \"codigo\",    \"tipoCarro\" : \"tipoCarro\",    \"dataAtualizacao\" : \"dataAtualizacao\",    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  } ]}", ResponseGetCarros.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carros\" : [ {    \"codigo\" : 6,    \"tipo\" : 1,    \"dataAtualizacao\" : \"dataAtualizacao\",    \"id\" : 0,    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  }, {    \"codigo\" : 6,    \"tipo\" : 1,    \"dataAtualizacao\" : \"dataAtualizacao\",    \"id\" : 0,    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  } ]}", ResponseGetCarros.class), HttpStatus.NOT_IMPLEMENTED);
+                } catch (IOException e) {
+                    log.error("Couldn't serialize response for content type application/json", e);
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
+        } else {
+            log.warn("ObjectMapper or HttpServletRequest not configured in default CarrosApi interface so no example is generated");
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+
+    @ApiOperation(value = "Remove um carro existente", nickname = "removeCarro", notes = "Exclui um novo carro retornando a URI de acesso ao recurso. Nesse caso, ao utiliar a URI será retornado uma resposta 404", response = ResponseDeleteCarros.class, tags={ "Carros", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Carro removido com sucesso", response = ResponseDeleteCarros.class),
+        @ApiResponse(code = 405, message = "Entrada inválida"),
+        @ApiResponse(code = 500, message = "Erro interno") })
+    @RequestMapping(value = "/carros/{id}",
+        produces = { "application/json" }, 
+        consumes = { "application/json" },
+        method = RequestMethod.DELETE)
+    default ResponseEntity<ResponseDeleteCarros> removeCarro(@ApiParam(value = "",required=true) @PathVariable("id") Long id) {
+        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+            if (getAcceptHeader().get().contains("application/json")) {
+                try {
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"carro\" : {    \"codigo\" : 6,    \"tipo\" : 1,    \"dataAtualizacao\" : \"dataAtualizacao\",    \"id\" : 0,    \"dataCriacao\" : \"dataCriacao\",    \"descricao\" : \"descricao\"  },  \"uri\" : \"uri\"}", ResponseDeleteCarros.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

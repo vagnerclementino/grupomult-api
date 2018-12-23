@@ -41,5 +41,13 @@ public final class DateUtils {
 	public static Date localDateToDate(LocalDate localDate) {
 		return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	}
+	
+	public static Date localTimeToDate(LocalDateTime localDateTime) {
+		return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+	}
+	
+	public static Date getCurrentTime() {
+		return localTimeToDate(LocalDateTime.now());
+	}
 
 }
