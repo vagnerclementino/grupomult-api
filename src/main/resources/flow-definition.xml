@@ -28,5 +28,12 @@
 	<bean id="atualizaCarrosLoad"      class="br.com.grupomult.flows.carros.AtualizaCarrosLoad"      />
 	<bean id="atualizaCarrosConverter" class="br.com.grupomult.flows.carros.AtualizaCarrosConverter" />
 	<bean id="atualizaCarroResponse"  class="br.com.grupomult.flows.carros.AtualizaCarroResponse"  />
+	
+	<!-- Flow: remove carro -->
+	<bean id="removeCarrosValidate"  class="br.com.grupomult.flows.carros.RemoveCarrosValidate"  />
+	<bean id="removeCarrosLoad"      class="br.com.grupomult.flows.carros.RemoveCarrosLoad"      />
+	<bean id="removeCarrosLoadValidate" class="br.com.grupomult.flows.carros.RemoveCarrosLoadValidate" />
+	<bean id="removeCarrosConverter" class="br.com.grupomult.flows.carros.RemoveCarrosConverter" />
+	<bean id="removeCarroResponse"  class="br.com.grupomult.flows.carros.RemoveCarrosResponse"  />
 
 </beans>

@@ -1,6 +1,5 @@
 package br.com.grupomult.configurations;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.boot.CommandLineRunner;
