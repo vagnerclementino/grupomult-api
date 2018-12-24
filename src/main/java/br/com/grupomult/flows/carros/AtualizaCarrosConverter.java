@@ -13,9 +13,8 @@ public class AtualizaCarrosConverter extends CarroConverter {
 	@Autowired
 	private AtualizaCarroResponse response;
 
-	public ResponseEntity<ResponsePutCarros> execute(Carro carro) {
-		CarroModel domain = convert(carro);
-		return response.execute(domain);
+	public ResponseEntity<ResponsePutCarros> execute(Carro entity) {
+		return response.execute(entity);
 	}
 
 	public Carro execute(CarroModel carro) {

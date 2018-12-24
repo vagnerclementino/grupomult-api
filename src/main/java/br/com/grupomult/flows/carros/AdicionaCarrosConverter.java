@@ -14,7 +14,7 @@ public class AdicionaCarrosConverter extends CarroConverter {
 	private AdicionaCarroResponse response;
 
 	public ResponseEntity<ResponsePostCarros> execute(Carro carro) {
-		return response.execute(convert(carro));
+		return response.execute(carro);
 	}
 
 	public Carro execute(CarroModel carro) {

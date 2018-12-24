@@ -5,13 +5,13 @@ import java.net.URI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.grupomult.entities.Carro;
 import br.com.grupomult.entities.ResponseDeleteCarros;
-import br.com.grupomult.models.CarroModel;
 
 public class RemoveCarrosResponse {
 
-	public ResponseEntity<ResponseDeleteCarros> execute(CarroModel carroModel) {
+	public ResponseEntity<ResponseDeleteCarros> execute(Carro carro) {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand().toUri();
-		return ResponseEntity.ok(new ResponseDeleteCarros().carro(carroModel).uri(uri.toString())				);
+		return ResponseEntity.ok(new ResponseDeleteCarros().carro(carro).uri(uri.toString())				);
 		}
 }

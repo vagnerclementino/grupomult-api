@@ -2,7 +2,7 @@ swagger: '2.0'
 
 info:
   version: '0.0.1-SNAPSHOT'
-  title: 'API - Animals'
+  title: 'API - Carros'
   description: 'API de recursos de manipulação para Carros'
 
 host: localhost:8080
@@ -150,13 +150,13 @@ definitions:
       carros:
         type: array
         items:
-          $ref: '#/definitions/CarroModel'
+          $ref: '#/definitions/Carro'
 
   ResponseGetCarrosById:
     type: object
     properties:
       carro:
-        $ref: '#/definitions/CarroModel'
+        $ref: '#/definitions/Carro'
 
   ResponsePostCarros:
     type: object
@@ -164,7 +164,7 @@ definitions:
       uri:
         type: "string"
       carro:
-        $ref: '#/definitions/CarroModel'
+        $ref: '#/definitions/Carro'
 
   ResponsePutCarros:
     type: object
@@ -172,7 +172,7 @@ definitions:
       uri:
         type: "string"
       carro:
-        $ref: '#/definitions/CarroModel'
+        $ref: '#/definitions/Carro'
 
   ResponseDeleteCarros:
     type: object
@@ -180,7 +180,7 @@ definitions:
       uri:
         type: "string"
       carro:
-        $ref: '#/definitions/CarroModel'
+        $ref: '#/definitions/Carro'
 
   TipoCarro:
     type: "object"

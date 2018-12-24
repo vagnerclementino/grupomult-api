@@ -13,7 +13,7 @@ public class RemoveCarrosConverter extends CarroConverter {
 	private RemoveCarrosResponse response;
 
 	public ResponseEntity<ResponseDeleteCarros> execute(Carro carro) {
-		return response.execute(convert(carro));
+		return response.execute(carro);
 	}
 
 }

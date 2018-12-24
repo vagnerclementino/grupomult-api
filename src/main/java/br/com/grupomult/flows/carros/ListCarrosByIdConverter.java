@@ -13,7 +13,7 @@ public class ListCarrosByIdConverter extends CarroConverter {
 	private ListCarrosByIdResponse response;
 
 	public ResponseEntity<ResponseGetCarrosById> execute(Carro carro) {
-		return response.execute(convert(carro));
+		return response.execute(carro);
 	}
 
 }

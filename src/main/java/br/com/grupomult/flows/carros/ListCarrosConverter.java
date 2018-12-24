@@ -26,10 +26,9 @@ public class ListCarrosConverter extends CarroConverter {
 		 * lista vazia do tipo de resposta da API, caso contrário é gerada uma lista com
 		 * objetos de resposta da API baseados nos objetos do banco.
 		 */
-		List<CarroModel> animalsApi = ofNullableAndEmpty(carros)
+		List<Carro> animalsApi = ofNullableAndEmpty(carros)
 										.orElse(Collections.emptyList())
 										.stream()
-										.map(ListCarrosConverter::convert)
 										.collect(Collectors.toList());
 
 		return response.execute(animalsApi);

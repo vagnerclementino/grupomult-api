@@ -5,16 +5,16 @@ import java.net.URI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.grupomult.entities.Carro;
 import br.com.grupomult.entities.ResponsePostCarros;
-import br.com.grupomult.models.CarroModel;
 
 public class AdicionaCarroResponse {
 
-	public ResponseEntity<ResponsePostCarros> execute(CarroModel carroModel) {
+	public ResponseEntity<ResponsePostCarros> execute(Carro entity) {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(carroModel.getId()).toUri();
+				.path("/{id}").buildAndExpand(entity.getId()).toUri();
 		return ResponseEntity.ok(new ResponsePostCarros()
-										.carro(carroModel)
+										.carro(entity)
 										.uri(uri.toString())
 								);
 	}

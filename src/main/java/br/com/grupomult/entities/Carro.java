@@ -17,8 +17,10 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.grupomult.utils.DateUtils;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,10 +55,12 @@ public class Carro  implements Serializable {
   private String descricao = null;
 
   @JsonProperty("dataCriacao")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.ISO8601_COMPLETE_DATE_TIME)
   @Temporal(TemporalType.TIMESTAMP)
   private Date dataCriacao = null;
 
   @JsonProperty("dataAtualizacao")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.ISO8601_COMPLETE_DATE_TIME)
   @Temporal(TemporalType.TIMESTAMP)
   private Date dataAtualizacao = null;
 

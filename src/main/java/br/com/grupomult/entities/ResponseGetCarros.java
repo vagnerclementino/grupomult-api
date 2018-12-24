@@ -11,28 +11,27 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import br.com.grupomult.models.CarroModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * ResponseGetCarros
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:46:04.391-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-24T09:45:25.842-02:00")
 
 public class ResponseGetCarros  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("carros")
   @Valid
-  private List<CarroModel> carros = null;
+  private List<Carro> carros = null;
 
-  public ResponseGetCarros carros(List<CarroModel> carros) {
+  public ResponseGetCarros carros(List<Carro> carros) {
     this.carros = carros;
     return this;
   }
 
-  public ResponseGetCarros addCarrosItem(CarroModel carrosItem) {
+  public ResponseGetCarros addCarrosItem(Carro carrosItem) {
     if (this.carros == null) {
       this.carros = new ArrayList<>();
     }
@@ -48,11 +47,11 @@ public class ResponseGetCarros  implements Serializable {
 
   @Valid
 
-  public List<CarroModel> getCarros() {
+  public List<Carro> getCarros() {
     return carros;
   }
 
-  public void setCarros(List<CarroModel> carros) {
+  public void setCarros(List<Carro> carros) {
     this.carros = carros;
   }
 
