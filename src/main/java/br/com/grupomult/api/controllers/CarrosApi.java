@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.grupomult.entities.ResponseDeleteCarros;
-import br.com.grupomult.entities.ResponseGetCarros;
-import br.com.grupomult.entities.ResponseGetCarrosById;
-import br.com.grupomult.entities.ResponsePostCarros;
-import br.com.grupomult.entities.ResponsePutCarros;
+import br.com.grupomult.api.entities.ResponseDeleteCarros;
+import br.com.grupomult.api.entities.ResponseGetCarros;
+import br.com.grupomult.api.entities.ResponseGetCarrosById;
+import br.com.grupomult.api.entities.ResponsePostCarros;
+import br.com.grupomult.api.entities.ResponsePutCarros;
 import br.com.grupomult.models.CarroModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

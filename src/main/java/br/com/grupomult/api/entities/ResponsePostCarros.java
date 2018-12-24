@@ -1,4 +1,4 @@
-package br.com.grupomult.entities;
+package br.com.grupomult.api.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,15 +9,16 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.grupomult.entities.Carro;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ResponsePutCarros
+ * ResponsePostCarros
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-24T09:45:25.842-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-24T10:10:15.678-02:00")
 
-public class ResponsePutCarros  implements Serializable {
+public class ResponsePostCarros  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("uri")
@@ -26,7 +27,7 @@ public class ResponsePutCarros  implements Serializable {
   @JsonProperty("carro")
   private Carro carro = null;
 
-  public ResponsePutCarros uri(String uri) {
+  public ResponsePostCarros uri(String uri) {
     this.uri = uri;
     return this;
   }
@@ -46,7 +47,7 @@ public class ResponsePutCarros  implements Serializable {
     this.uri = uri;
   }
 
-  public ResponsePutCarros carro(Carro carro) {
+  public ResponsePostCarros carro(Carro carro) {
     this.carro = carro;
     return this;
   }
@@ -76,9 +77,9 @@ public class ResponsePutCarros  implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponsePutCarros responsePutCarros = (ResponsePutCarros) o;
-    return Objects.equals(this.uri, responsePutCarros.uri) &&
-        Objects.equals(this.carro, responsePutCarros.carro);
+    ResponsePostCarros responsePostCarros = (ResponsePostCarros) o;
+    return Objects.equals(this.uri, responsePostCarros.uri) &&
+        Objects.equals(this.carro, responsePostCarros.carro);
   }
 
   @Override
@@ -89,7 +90,7 @@ public class ResponsePutCarros  implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponsePutCarros {\n");
+    sb.append("class ResponsePostCarros {\n");
     
     sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("    carro: ").append(toIndentedString(carro)).append("\n");

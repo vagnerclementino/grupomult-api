@@ -1,4 +1,4 @@
-package br.com.grupomult.entities;
+package br.com.grupomult.api.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,24 +9,25 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.grupomult.models.CarroModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ResponsePostCarros
+ * ResponseDeteleCarro
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-24T10:10:15.678-02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-23T17:30:34.474-02:00")
 
-public class ResponsePostCarros  implements Serializable {
+public class ResponseDeteleCarro  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("uri")
   private String uri = null;
 
   @JsonProperty("carro")
-  private Carro carro = null;
+  private CarroModel carro = null;
 
-  public ResponsePostCarros uri(String uri) {
+  public ResponseDeteleCarro uri(String uri) {
     this.uri = uri;
     return this;
   }
@@ -46,7 +47,7 @@ public class ResponsePostCarros  implements Serializable {
     this.uri = uri;
   }
 
-  public ResponsePostCarros carro(Carro carro) {
+  public ResponseDeteleCarro carro(CarroModel carro) {
     this.carro = carro;
     return this;
   }
@@ -59,11 +60,11 @@ public class ResponsePostCarros  implements Serializable {
 
   @Valid
 
-  public Carro getCarro() {
+  public CarroModel getCarro() {
     return carro;
   }
 
-  public void setCarro(Carro carro) {
+  public void setCarro(CarroModel carro) {
     this.carro = carro;
   }
 
@@ -76,9 +77,9 @@ public class ResponsePostCarros  implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponsePostCarros responsePostCarros = (ResponsePostCarros) o;
-    return Objects.equals(this.uri, responsePostCarros.uri) &&
-        Objects.equals(this.carro, responsePostCarros.carro);
+    ResponseDeteleCarro responseDeteleCarro = (ResponseDeteleCarro) o;
+    return Objects.equals(this.uri, responseDeteleCarro.uri) &&
+        Objects.equals(this.carro, responseDeteleCarro.carro);
   }
 
   @Override
@@ -89,7 +90,7 @@ public class ResponsePostCarros  implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponsePostCarros {\n");
+    sb.append("class ResponseDeteleCarro {\n");
     
     sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("    carro: ").append(toIndentedString(carro)).append("\n");

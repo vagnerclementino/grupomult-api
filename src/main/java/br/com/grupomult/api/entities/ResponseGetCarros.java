@@ -1,6 +1,8 @@
-package br.com.grupomult.entities;
+package br.com.grupomult.api.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
@@ -9,39 +11,49 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.grupomult.entities.Carro;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ResponseGetCarrosById
+ * ResponseGetCarros
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-24T09:45:25.842-02:00")
 
-public class ResponseGetCarrosById  implements Serializable {
+public class ResponseGetCarros  implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("carro")
-  private Carro carro = null;
+  @JsonProperty("carros")
+  @Valid
+  private List<Carro> carros = null;
 
-  public ResponseGetCarrosById carro(Carro carro) {
-    this.carro = carro;
+  public ResponseGetCarros carros(List<Carro> carros) {
+    this.carros = carros;
+    return this;
+  }
+
+  public ResponseGetCarros addCarrosItem(Carro carrosItem) {
+    if (this.carros == null) {
+      this.carros = new ArrayList<>();
+    }
+    this.carros.add(carrosItem);
     return this;
   }
 
   /**
-   * Get carro
-   * @return carro
+   * Get carros
+   * @return carros
   **/
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public Carro getCarro() {
-    return carro;
+  public List<Carro> getCarros() {
+    return carros;
   }
 
-  public void setCarro(Carro carro) {
-    this.carro = carro;
+  public void setCarros(List<Carro> carros) {
+    this.carros = carros;
   }
 
 
@@ -53,21 +65,21 @@ public class ResponseGetCarrosById  implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponseGetCarrosById responseGetCarrosById = (ResponseGetCarrosById) o;
-    return Objects.equals(this.carro, responseGetCarrosById.carro);
+    ResponseGetCarros responseGetCarros = (ResponseGetCarros) o;
+    return Objects.equals(this.carros, responseGetCarros.carros);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(carro);
+    return Objects.hash(carros);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponseGetCarrosById {\n");
+    sb.append("class ResponseGetCarros {\n");
     
-    sb.append("    carro: ").append(toIndentedString(carro)).append("\n");
+    sb.append("    carros: ").append(toIndentedString(carros)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.grupomult.api.entities.ResponseDeleteCarros;
+import br.com.grupomult.api.entities.ResponseGetCarros;
+import br.com.grupomult.api.entities.ResponseGetCarrosById;
+import br.com.grupomult.api.entities.ResponsePostCarros;
+import br.com.grupomult.api.entities.ResponsePutCarros;
 import br.com.grupomult.constants.ApiConstants;
-import br.com.grupomult.entities.ResponseDeleteCarros;
-import br.com.grupomult.entities.ResponseGetCarros;
-import br.com.grupomult.entities.ResponseGetCarrosById;
-import br.com.grupomult.entities.ResponsePostCarros;
-import br.com.grupomult.entities.ResponsePutCarros;
 import br.com.grupomult.flows.carros.AdicionaCarrosValidate;
 import br.com.grupomult.flows.carros.AtualizaCarrosValidate;
 import br.com.grupomult.flows.carros.ListCarrosByIdValidate;

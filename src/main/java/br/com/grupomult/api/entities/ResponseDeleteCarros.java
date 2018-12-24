@@ -1,4 +1,4 @@
-package br.com.grupomult.entities;
+package br.com.grupomult.api.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.grupomult.entities.Carro;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
