@@ -13,9 +13,9 @@ public class AdicionaCarroResponse {
 	public ResponseEntity<ResponsePostCarros> execute(Carro entity) {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(entity.getId()).toUri();
-		return ResponseEntity.ok(new ResponsePostCarros()
-										.carro(entity)
-										.uri(uri.toString())
+		return ResponseEntity.created(uri).body(new ResponsePostCarros()
+														.carro(entity)
+														.uri(uri.toString())
 								);
 	}
 
