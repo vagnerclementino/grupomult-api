@@ -15,7 +15,7 @@ public class AdicionaCarroResponse {
 	 * @author Vagner Clementino
 	 * @since 24 de dez de 2018
 	 * @param entity
-	 * @return
+	 * @return ResponseEntity<ResponsePostCarros> 
 	 */
 	public ResponseEntity<ResponsePostCarros> execute(Carro entity) {		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()

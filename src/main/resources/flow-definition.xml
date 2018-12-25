@@ -20,6 +20,7 @@
 	<!-- Flow: adiciona carro -->
 	<bean id="adicionaCarrosValidate"  class="br.com.grupomult.flows.carros.AdicionaCarrosValidate"  />
 	<bean id="adicionaCarrosLoad"      class="br.com.grupomult.flows.carros.AdicionaCarrosLoad"      />
+	<bean id="adicionaCarrosLoadValidate" class="br.com.grupomult.flows.carros.AdicionaCarrosLoadValidate" />
 	<bean id="adicionaCarrosConverter" class="br.com.grupomult.flows.carros.AdicionaCarrosConverter" />
 	<bean id="adicionaCarroResponse"  class="br.com.grupomult.flows.carros.AdicionaCarroResponse"  />
 	
